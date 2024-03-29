@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIT CHECK</title>
+   
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="FITLOGO.png" type="image/icon type">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+      transition: opacity 0.5s ease-in-out;
+    }
+    #intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+           
+        }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+    } 
+    .btn1 {
+        background-color: #61D3DE; 
+        border: none;
+        color: rgb(17, 7, 7);
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        margin-top: 15px;
+    }
+
+    .contrainer2:hover {
+        background-color: #61D3DE;
+
+    }
+   
+    #thirdSection{
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 100px;
+    }
+
+    .ems{
+        font-size: 20px;
+    }
+    .footercol{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+    .Bodfat{
+        height: 150px;
+        width: 150px;
+        margin-top: 20px;
+        justify-content: space-around;
+    }
+    #BodyFatPercentage{
+        font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: light;
+  font-style:normal;
+
+    }
+    .navbar{
+        font-family: "Raleway", sans-serif;
+    }
+
+</style>
+  <body>
+    <script>
+        $(document).ready(function(){
+           $("#BMI").hide();
+       
+           $("#thirdSection").hide();
+           $("#ProteinIntake").hide();
+           $("#BodyFatPercentage").hide();
+
+        });
+
+    </script>
+
+    <!-- NAV SECTION -->
+
+    <header style="position: sticky;">
+        <nav style="position: sticky;" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+            <a class="navbar-brand fs-2" href="#index.html">FI<img style="height: 40px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADoklEQVR4nO2aTWgTQRTHB7XSVi3ix8mLePCg6EG8+N2LIkLRS05tszMRgnrx4+KxtXrRswqFQhHRg1AUC2IVqafiIdjum9XWtG+mjS1e/Lgp+EFktm2aJk26m+xudjf7gyHLZvftvH/ezHs7GUIiIiJqRXJiYptqpJ64ZBgbKYhbjOMs4yI733CWcuzpGPuygYQZ9j69nXEBS44vb5QLXV1Dwgrj4lUp53MN8CUJI8zAo6s6n4uEycMkbFCOPdYFwBskbFCOvTYE6CX1HAGMY3c5W13Dw+sSMHVQfZKgoPGpI1YFSIA8VM4WBXHfjBQQd1d8lpSNFMR1CngnPprZQfwCBRyyEP4vVrPDQNwrJwAFvJ2zB/jOkc5rXLZSEIMMxIlKbagcb+b6Us4DjlmpDFXoU336QKkhwDg+zRtO34kTUOW8mafF82rsqGpPzfKUi89LuV9k1LhPpuaaHemrjscYxx+M41/KxWUnbBL1yyvnE7o47ohBQkjnx9mt543MFuICyVSqoT2dbiF+IJmaa9ZAnmOAN1WKK9fMa3RxNjaSaSJBpyubXUMBr1HAb9ZTYK4k/sq4vKJskCCiSdmohoxtx4trgmfKFgkalIuH1Tufyw4PSJDQDHnaKedzxREXpwJTHTIQb5wWgHLxuprq0DPa0+kWysUfFwT4nRgf31RpdegZccD9TjufE0HHfZVWh57BVMHkkgDVlOGeoXHZ6pYAyjbxO1okgIwigBWFL/60H/LF9wR2CMRVZgAxYGOyG1gpmwRWAG1U7qQc+63nfOxX9/hGAMqxLf+VtXMMd/tNANWnglfrNscEYBy7rXakVgIUP7f8ynJZYiOZJgYzu1QzjwMqQKEflgXQ8ozNHwdTgEI/IgGcigAKYrDkut7i6vHy6x8zLj5ZjQB17cI92cqf62IE0HIdKbXYaVcAm/Y9FUCrIB/bnQPs2vfNHBAKAWJVpEE/CVBxGiwkqALYteFIKVwrAVwthZ3AbQF8D40EwCgCWFFlh0Mr7RqpmyGQ0CVVLbACaKNyc+xJdq3XAjixXadqKOBJ9RcY5fjWawGc2q5TFRQwsdCJGa8FcGO7ToW7P6bOqIWLup0D7BAJwKMI6I+GAI/mgGz9ToIg+ore/AA7zFZUIos+EjYYx4sF7wH/mDG9J/5hcq95nB8ZIC+QsJFMpRrUUrfpLOAvtQt08Tum41V1bkGIRzXf5+P2LjIlRuH5mGGs983m5ogIUjf8B3DHB7I5ZgcmAAAAAElFTkSuQmCC"> CHECK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div class="container2 mt-2 fs-4">
+                <ul class="navbar-nav ms-auto nav-underline">
+                    <li class="nav-item">
+                        <a class="nav-link fs-4 " href="#index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4" href="#secondSection">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4" href="#thirdSection">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4" href="#Footer1">Contact</a>
+                    </li>
+                </ul>
+         </nav>         
+    </header>
+    <!-- INTRO SECTION -->
+<section id="intro" class="center"style="margin-bottom:50px">
+    <div class="container">
+                <h1 class="display-4 text-center" style="padding-top: 100px;">Welcome to FI<img style="height: 60px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADoklEQVR4nO2aTWgTQRTHB7XSVi3ix8mLePCg6EG8+N2LIkLRS05tszMRgnrx4+KxtXrRswqFQhHRg1AUC2IVqafiIdjum9XWtG+mjS1e/Lgp+EFktm2aJk26m+xudjf7gyHLZvftvH/ezHs7GUIiIiJqRXJiYptqpJ64ZBgbKYhbjOMs4yI733CWcuzpGPuygYQZ9j69nXEBS44vb5QLXV1Dwgrj4lUp53MN8CUJI8zAo6s6n4uEycMkbFCOPdYFwBskbFCOvTYE6CX1HAGMY3c5W13Dw+sSMHVQfZKgoPGpI1YFSIA8VM4WBXHfjBQQd1d8lpSNFMR1CngnPprZQfwCBRyyEP4vVrPDQNwrJwAFvJ2zB/jOkc5rXLZSEIMMxIlKbagcb+b6Us4DjlmpDFXoU336QKkhwDg+zRtO34kTUOW8mafF82rsqGpPzfKUi89LuV9k1LhPpuaaHemrjscYxx+M41/KxWUnbBL1yyvnE7o47ohBQkjnx9mt543MFuICyVSqoT2dbiF+IJmaa9ZAnmOAN1WKK9fMa3RxNjaSaSJBpyubXUMBr1HAb9ZTYK4k/sq4vKJskCCiSdmohoxtx4trgmfKFgkalIuH1Tufyw4PSJDQDHnaKedzxREXpwJTHTIQb5wWgHLxuprq0DPa0+kWysUfFwT4nRgf31RpdegZccD9TjufE0HHfZVWh57BVMHkkgDVlOGeoXHZ6pYAyjbxO1okgIwigBWFL/60H/LF9wR2CMRVZgAxYGOyG1gpmwRWAG1U7qQc+63nfOxX9/hGAMqxLf+VtXMMd/tNANWnglfrNscEYBy7rXakVgIUP7f8ynJZYiOZJgYzu1QzjwMqQKEflgXQ8ozNHwdTgEI/IgGcigAKYrDkut7i6vHy6x8zLj5ZjQB17cI92cqf62IE0HIdKbXYaVcAm/Y9FUCrIB/bnQPs2vfNHBAKAWJVpEE/CVBxGiwkqALYteFIKVwrAVwthZ3AbQF8D40EwCgCWFFlh0Mr7RqpmyGQ0CVVLbACaKNyc+xJdq3XAjixXadqKOBJ9RcY5fjWawGc2q5TFRQwsdCJGa8FcGO7ToW7P6bOqIWLup0D7BAJwKMI6I+GAI/mgGz9ToIg+ore/AA7zFZUIos+EjYYx4sF7wH/mDG9J/5hcq95nB8ZIC+QsJFMpRrUUrfpLOAvtQt08Tum41V1bkGIRzXf5+P2LjIlRuH5mGGs983m5ogIUjf8B3DHB7I5ZgcmAAAAAElFTkSuQmCC"> CHECK</h1>
+                <p class="lead text-center ">Welcome to Your Fitness Journey!
+
+                    Start your fitness journey today and track your progress along the way. Remember, every step forward is progress, no matter where you're starting from. Let's work together to achieve your fitness goals and create the body you deserve.</p>
+                <div class="text-center">
+                    <a href="#thirdSection" style="text-decoration: none;color: black;" ><button class="btn1">CHECK NOW</button></a>
+                </div>
+            </div>
+    </div>
+</section>
+
+    <!-- SECOND SECTION MISSION/VISION -->
+
+  <section id="secondSection" style="padding-top: 5%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                      
+                    </div>
+                    <div class="col-md-6">
+                        <h2 style="font-family: Raleway, sans-serif;">Our Mission</h2>
+                        <p>Our mission is to help you achieve your fitness goals and create the body you deserve. We believe that every step forward is progress, no matter where you're starting from. Let's work together to achieve your fitness goals and create the body you deserve.</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 style="font-family: Raleway, sans-serif;">Our Vision</h2>
+                        <p>Let's team up to make your fitness aspirations a reality and sculpt the body you've always wanted. No matter your starting point, every stride forward counts as progress on your journey to greatness. Together, we'll chart a course to achieve your goals and unlock your full potential.</p>
+                    </div>
+                    <div class="col-md-10">
+                       
+                    </div>
+                </div>
+            </div>
+  </section>
+    
+  <!-- REVEAL CALCULATION SECTION -->
+
+  <section id="thirdSection">
+    <div class="container" style="padding-top: 50px;">
+        <div class="row" style="padding-top: 20px;">
+          <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top" style="height: 300px;" src="https://cdn.dribbble.com/users/3578417/screenshots/15731460/media/28c6fca1f22751963facec7ff1561c28.gif">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Raleway, sans-serif; font-weight: 700;">BMI</h5>
+                <p class="card-text">Calculate your BMI <em class="ems">(BODY MASS INDEX)</em>.</p><br>
+                <a href="#BMI" style="text-decoration: none;color: black;"><button id="bmibutton" class="btn"style="background-color:#61D3DE;font-weight:medium">CALCULATE</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top" style="height: 300px;" src="https://media0.giphy.com/media/3o7bueVxlU3uSGP2b6/source.gif">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Raleway, sans-serif; font-weight: 700;">PROTEIN INTAKE</h5>
+                <p class="card-text">Calculate your <em class="ems">PROTEIN INTAKE (grams)</em>.</p><br>
+                <a href="#ProteinIntake" style="text-decoration: none;color: black;"><button href="#ProteinIntake" id="bmibutton2" class="btn"style="background-color:#61D3DE;font-weight:medium">CALCULATE</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top" style="height: 300px;" src="https://cdn.dribbble.com/users/769413/screenshots/2425411/weightlifter.gif">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Raleway, sans-serif; font-weight: 700;">BODY FAT CALCULATOR</h5>
+                <p class="card-text">Calculate your <em class="ems">Body Fat</em>.</p><br>
+                <a href="#BodyFatPercentage" style="text-decoration: none;color: black;"><button id="button4" class="btn"style="background-color:#61D3DE;font-weight:medium">CALCULATE</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- FOR BMI CALCULATIONS -->
+
+  <section id="BMI"style="padding:20px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 style="font-family: Raleway, sans-serif; font-weight: 700;">BMI Calculator</h2>
+                <p>Calculate your BMI (Body Mass Index) to determine if you are underweight, normal weight, overweight, or obese. Your BMI is a measure of your body fat based on your height and weight. It is used to screen for weight categories that may lead to health problems.</p>
+                
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="height" class="form-label">Height (cm)</label>
+                        <input type="number" class="form-control" id="height">
+                    </div>
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Weight (kg)</label>
+                        <input type="number" class="form-control" id="weight">
+                    </div>
+                    <div>
+                        <button type="button" class="btn" style="background-color: #61D3DE;" data-bs-toggle="modal" data-bs-target="#modal1" id="Res1">
+                            RESULTS
+                          </button>
+                      </div>
+                    <!-- <button type="submit" class="btn" style="background-color:#61D3DE;font-weight:medium" onclick="BMI()">CALCULATE</button> -->
+                    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" style="font-family: Raleway, sans-serif;">BODY MASS INDEX(BMI) Calculator</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img style="width: 200px;height: 200;" src="https://cdn.dribbble.com/users/3578417/screenshots/15731460/media/28c6fca1f22751963facec7ff1561c28.gif">
+                                <h1 style="font-family: Raleway, sans-serif;">Body Mass Index</h1>
+                                <p style="font-family: Raleway, sans-serif;">Calculate your BMI (Body Mass Index) using your height and weight to assess if you're underweight, normal weight, overweight, or obese. This measurement helps screen for potential health problems related to weight categories.</p>
+                                <div id="AppendHere1">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button style="background-color: #61D3DE;" type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                             
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+  </section>
+
+    <!-- FOR PROTEIN INTAKE -->
+  <section id="ProteinIntake" style="padding:20px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 style="font-family: Raleway, sans-serif; font-weight: 700;">Protein Intake Calculator</h2>
+                <p>Calculate your protein intake to determine how much protein you should be consuming each day. Protein is an essential nutrient that helps build muscle, repair tissue, and support overall health. Your protein intake should be based on your weight and activity level.</p>
+                
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Weight (kg)</label>
+                        <input type="number" class="form-control" id="weight2">
+                      
+                            <div class="container" style="padding: 10px;">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio2">NOT ACTIVE</label>
+                                  </div>
+                             
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">LIGHTLY ACTIVE</label>
+                                  </div>
+                            
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="option3">
+                                    <label class="form-check-label" for="inlineRadio2">MODERATELY ACTIVE</label>
+                                  </div>
+                              
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="option4">
+                                    <label class="form-check-label" for="inlineRadio2">VERY ACTIVE</label>
+                                  </div>
+                              
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="option5">
+                                    <label class="form-check-label" for="inlineRadio2">EXTREMELY ACTIVE</label>
+                                  </div>
+                            </div>
+                           
+                       
+                    </div>
+                    <div>
+                        <button type="button" class="btn" style="background-color: #61D3DE;" data-bs-toggle="modal" data-bs-target="#modal2" id="Res2">
+                            RESULTS
+                          </button>
+                      </div>
+                    
+                    <!-- <button type="submit" class="btn" style="background-color:#61D3DE;font-weight:medium" onclick="proteinIntake()">CALCULATE</button> -->
+                    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" style="font-family: Raleway, sans-serif;">PROTEIN INTAKE CALCULATOR</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img style="width: 200px;height: 200;" src="https://i.giphy.com/3o7bueVxlU3uSGP2b6.webp">
+                                <h1 style="font-family: Raleway, sans-serif;">Protein Intake Calculator</h1>
+                                <p style="font-family: Raleway, sans-serif;">This formula gives a rough estimate of your protein needs based on your weight and activity level. For personalized recommendations tailored to your fitness goals, consult a healthcare professional or nutritionist.</p>
+                                <div id="AppendHere2">
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button style="background-color: #61D3DE;" type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                             
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- BODY FAT PERCENTAGE -->
+
+  <section id="BodyFatPercentage"style="padding:20px;">
+
+<div class="container">
+    <h1 style="font-family: Raleway, sans-serif; font-weight: 700;">Choose Your Body Type</h1>
+    
+        <img class="Bodfat" src="1.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">1</label>
+          </div>
+        <img class="Bodfat" src="2.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio1">2</label>
+          </div>
+        <img class="Bodfat" src="3.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="option3">
+            <label class="form-check-label" for="inlineRadio1">3</label>
+          </div>
+        <img class="Bodfat" src="4.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio4" value="option4">
+            <label class="form-check-label" for="inlineRadio1">4</label>
+          </div>
+        <img class="Bodfat" src="5.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio5" value="option5">
+            <label class="form-check-label" for="inlineRadio1">5</label>
+          </div>
+        <img class="Bodfat" src="6.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio6" value="option6">
+            <label class="form-check-label" for="inlineRadio1">6</label>
+          </div>
+        <img class="Bodfat" src="7.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio7" value="option7">
+            <label class="form-check-label" for="inlineRadio1">7</label>
+          </div>
+        <img class="Bodfat" src="8.jpg">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio8" value="option8">
+            <label class="form-check-label" for="inlineRadio1">8</label>
+          </div>
+        <!-- FOR ACTIVE CLASSIFICATIONS  -->
+
+
+          <div style="padding-top: 40px;">
+            <button type="button" class="btn" style="background-color: #61D3DE;" data-bs-toggle="modal" data-bs-target="#modal3" id="Res3">
+                RESULTS
+              </button>
+          </div>
+   
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-family: Raleway, sans-serif;">BODY FAT PERCENTAGE (%)</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img style="width: 200px;height: 200;" src="https://cdn.dribbble.com/users/769413/screenshots/2425411/weightlifter.gif">
+            <h1 style="font-family: Raleway, sans-serif;">Body Fat Percentage</h1>
+            <p style="font-family: Raleway, sans-serif;">Body fat percentage is the amount of body fat in relation to your total body weight. It is an important indicator of overall health and fitness. Calculate your body fat percentage to determine if you are at a healthy weight.</p>
+            <div id="AppendHere3">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button style="background-color: #61D3DE;" type="button" class="btn" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+         
+</div>
+
+
+  </section>
+
+
+    <section id="Footer1" style="padding: 15px;background-color: #61D3DE;;">
+        <footer>
+           
+            <div class="container text-center" >
+                <div>
+                    <h2 style="font-size: 20px;">CONTACT ME  <a style="text-decoration: none;color: black;" href="mailto:iamkenrod2016@gmail.com"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACC0lEQVR4nO1Uv2sUURBeYtTCiCAiEgSjBgMHtzPnIlzezPJu5vbCxf56QbS0FSOadKZJk8rERv+CdEFMqvwHQpoUInr4E2zURhQis7kNUfY2uUUr/eDxeG/eft97M99OEPzHfkAnV5G0i6zbpQdpF0mn8wVIu8DyClgfBMHsUDAQZofsOyR5bSNfgHW7Up86CaTrwLIaJcmJg1BXvB9BkhVk2QgnW6eNp6+Azd77YWSZR5KtqpOJIvLIyUVk3UTWpSiKDu/l6SuQAVhuAOk75GaSd77qNAbSt8iNW0U8hQHgBgHLG2C9/Zv4TRMPY9GD8BQGwPsxIHmOpMuR96dstrXtD8LTP9ArJLA8RpZPwPrE1nvjYdw6DySPUheldk3npV8uUSRQhBo320D6EUnuWdErlc6RXvHv2z44mSotUOXmBWT5cJl8PS+OsThkeZ++pIwAki7bzdOXTMo5+4eQ5CuwrCHpddsHkjlkeVhWoGvp2CFKye+ErdYxZJ3J+Gp1P24dIj0cUsKDCADpd8t5T+xLVvwJ545nAp1O5xCQ/LAD07suGGBE2QssLawzO47TuxazC9sP2bc/7Z8iWTC37NaA5RmyfkbSpxDrNSR9aeTmtFICVe/Ppu0iFhf8LQA3yKxqbrGCjrfbR0NuXjJ35bWSUrji/RkgXTS3IMs3ZHlh65pLRv+IQPBP4Ce1+usMQlUJHAAAAABJRU5ErkJggg==">iamkenrod2016@gmail.com</a></h2>
+                    <p>Have a question or need help? Contact me and i'll get back to you as soon as possible.</p>
+                    <div class="footercol">
+                        <p style="padding-right: 10px;"><a href=""><img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADGUlEQVR4nO2Y24tNURzHP4aOS00ZEyM8i3GJGXlQLk8kt/DAEw+i5k3UuJQX+QMw5smkXPJAIY08umZQBgfFFDKDTMYIQw5mllb9Tu322WvvtdfZZ2y1v/WtmX3W7/v7ffdee+21fpAhQ4YMGf4zTAd2AMeBTuArcB0YYRGrx1yTmE7R0Fpac1gwFTgAdAHKwwJwGzgC1FjojAcOS0zBp/VCcuhciWMScAz46Umo/z4LrAeqy9CuFg2t5ddvldyJYDXQ60nQD+wFan3jZgPbgBagHXgmY/8I++Vau4zRY2f5NGpFu9+Tr1dqKAuLgF8e0Rbf1Fkgd63bNz3isFuedqNHt0aueZ/OQlcTI+UOFsV+Azn5bQVwv4ziTbwHLJccOXmSxd8eAlUuRrYEJNIrzc0KGPDzFnAj4PomFyP5YSg4LjvjmliSgqKVgbHeldMpKFgZ2GZrYgzwJQUFKwM/A6NtjGxIQbEqgmtsjJxJQaEqgiejTFT5vuJp5YeozWlDCopUlpwbZmSPg+AdYJ68gPOBjgrFKB93hxm5HFPskWfbUoT+/3HCMSqAF8KMvE9o9ViXcIwKYI/JxDSHx2s6K0xMOEYZOCVIaK2DUJ2hqLqEY5SBgeeUXQ5C2nzcaeISowzcGSTU6iBkenHzCccoA/VBrwRXHYSULJ0NskfTp7y7FYpRAbwSZOSpo9i/ZD7IyJsUFKZi8nWQkU8hAUNyZh4cxiIH5SM5FDKmL8iIv1Hmpe4EaiwNaM5Vgl3AMsnZFjJO11yCByEBT4DJMm6UtDd7KmCgB9guOZCcYe+urrkEM4GBkKCP0lkpbp/1hm8jcCkiLorfgItyoMuJts6xVaZOWNwMDFhlUVRe2jLeHlNOpkIzcEKW15dSSEHYJ9c6ZEyzTNWcr5e22eKbok2sJAKNshpE3cm3wFFgsWvjTFAlXRut9c4i7yv5BllhHHAI+G4h/AOoL8NIvWhE5dEz5SAw1iWJbirvl1a/KUET5aMpRP85sA+YQEKYI5u087K+D9g0AWLglGhq7XOSS3f4M2TIkCFDhgxY4i+D3DCoZ+v6igAAAABJRU5ErkJggg=="></a></p>
+                        <p><a href="https://github.com/Iamken-rd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADtklEQVR4nO2ZSWgVQRCGP2OCS3CJYoy7uCtiDi6o8aAIikvQi4oGvCiiRo2E6FXJQdxQg4LgUTx4cyPuHhVRD0bcsyDu4IJrTNTnSEMNPOfNm1czb2YSJD8UDNNT1fV3V1dX90AH/l8UAEuBfUAt8Bj4CLSKmOdH0ma+WQL0pp2gC1AGXAJ+A5ZPMToXgFViK3Z0AyqBVwGcTycvga1A17hILAAaQiTglHpgfpQEzNTXREjAKcdl5kNFf+BOjCQskVtAYVgkhst0W20kT8WHrNBP0qjVxtIAFAUl0bWNwsnyCLNAKfpoO3DecsjhICnWy+B2CbspwA7gWRbOmd1+G1As1cGBDN/P05LoptgnBruEoSH0A7gKVACzgNFAvsgYebcROAN8BTYDnR22ihWLXxVilYpRTLf75mlHy+PbAYr+zUB5oouy7Ah9o0pCkaL/F5lmpUwZ1+MiJFKi9GGll5FLSiPLIyRSrvThfDoDBT5K8eoIiRxT+vAL6OlmYKnSwGdZkFFhPPBT6Uupm4H9SmWT56PGSaUve92Ua5XK02Igskzpy1k35afKuMyNgchYJRFT0KbgvULRfBMHhiiJvHNTblUomm86xUBkoiMKPor8cfjT4qZsZ4rZUu+MAPoAA+XZljiIJCNXtoYC6dtUFYOSBjYFn6TxJnAXaJRQeiPPtqwgehz2iIrvScvAzFIKnkjjNUmxWyRPm4p1khw37VGJGjnS11BggmTKRVI575a7MPsIkIKL0rhLqsuDwCngOlAns/FBpnN1xLPRIqPdBDwAbgPngCNyFtrvVaZUKzOFkW8yU2FjncuC9pKdbkbm+jBgpBlYE1KomZJ8j08SRua4GeuuTMFOuSFryXnS0yBfBqMxQL8tXucie504xZxT1soGlM7wW+AEsEFGaiTQK8l2XznHmOvQKikvvgYgYImYkiotSj1SXomcwd8qw65KbihtFMq75iyct5JkYaa015RGsU7apwJfMpAwpNOhJAQy9eKLJyo8DJhcbpcQFyU07J84z4ErwOJMHQDrsyRSrr3duBckLn0gx6MPK4Pc9VOBzwQSLkYSIe4fGwKQSADT/XZ0JI2xT3KxNlgTpx4YFYBITZCO8qTu8tNRZ5/2/di+7PMC8B/09BnLfqG1+yCMP8DDgIdtSOS+nBhDQQ+pNOMmciWKf/F5UmInYiCSAA5FfdExWc4HURGpA2YQE3IlBTc4fvj7xeskfWNrU0zXTSnIkbLldFL54gelorswyz2pAx0gIvwFLXDNiM6zHVAAAAAASUVORK5CYII="></a></p>
+                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    
+                      <p>&copy; 2024 FIT CHECK. All rights reserved.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+
+    $(document).ready(function(){
+        $(".btn1").click(function(){
+            
+            $("#thirdSection").show();
+
+        });
+        $("#bmibutton").click(function(){
+            
+            $("#BMI").toggle();
+
+        });
+        $("#bmibutton2").click(function(){
+            
+            $("#ProteinIntake").toggle();
+
+        });
+
+        $("#button4").click(function(){
+            
+            $("#BodyFatPercentage").toggle();
+
+        });
+
+        $("#Res1").click(function(){
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+            var bmi = weight / (height/100 * height/100);
+            var result = "Your BMI is:  " + bmi.toFixed(2);
+            $("#AppendHere1").html(result);
+        });
+
+        $("#Res2").click(function(){
+            var weight = document.getElementById("weight2").value;
+            var activity = document.querySelector('input[name="inlineRadioOptions2"]:checked').value;
+            var protein = 0;
+            if(activity == "option1")
+            {
+                protein = weight * 0.8;
+            }
+            else if(activity == "option2")
+            {
+                protein = weight * 1.2;
+            }
+            else if(activity == "option3")
+            {
+                protein = weight * 1.5;
+            }
+            else if(activity == "option4")
+            {
+                protein = weight * 1.8;
+            }
+            else if(activity == "option5")
+            {
+                protein = weight * 2.0;
+            }
+            var result = "Your Protein Intake is:  " + protein.toFixed(2) + " grams";
+            $("#AppendHere2").html(result);
+        });
+
+        $("#Res3").click(function(){
+            var bodytype = document.querySelector('input[name="inlineRadioOptions1"]:checked').value;
+            var bodyfat = 0;
+            if(bodytype == "option1")
+            {
+                bodyfat = 10;
+            }
+            else if(bodytype == "option2")
+            {
+                bodyfat = 15;
+            }
+            else if(bodytype == "option3")
+            {
+                bodyfat = 20;
+            }
+            else if(bodytype == "option4")
+            {
+                bodyfat = 25;
+            }
+            else if(bodytype == "option5")
+            {
+                bodyfat = 30;
+            }
+            else if(bodytype == "option6")
+            {
+                bodyfat = 35;
+            }
+            else if(bodytype == "option7")
+            {
+                bodyfat = 40;
+            }
+            else if(bodytype == "option8")
+            {
+                bodyfat = 45;
+            }
+            var result = "Your Body Fat Percentage is:  " + bodyfat + " %";
+            $("#AppendHere3").html(result);
+        });
+
+       
+    });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

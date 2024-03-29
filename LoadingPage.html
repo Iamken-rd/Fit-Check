@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITCHECK</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="icon" href="FITLOGO.png" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<style>
+   
+    .wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        text-align: center;
+       
+        
+    }
+
+.F,.I,.IM,.C,.H,.E,.c,.K{
+    font-family: "Raleway", sans-serif;
+    font-weight: light;
+    font-size: 50px;
+    
+}
+
+
+a{
+    text-decoration: none;
+    transition: 0.5s;
+}
+.F{
+opacity: 1;
+animation: drop 2s linear forwards 0.5s;
+color: black;
+
+}
+.I{
+opacity: 1;
+animation: drop 2.2s linear forwards 0.8s;
+color: black;
+
+}
+.IM {
+opacity: 0;
+animation: drop 2.5s linear forwards 1s;
+color: white;
+
+}
+
+
+.C {
+opacity: 0;
+animation: drop 2.5s linear forwards 0.2s;
+
+color: black;
+
+}
+.H{
+opacity: 0;
+animation: drop 2s linear forwards 0.2s;
+
+color: black;
+
+}
+.E{
+opacity: 0;
+animation: drop 1.5s linear forwards 0.2s;
+color: black;
+
+}
+.c {
+opacity: 0;
+animation: drop .7s linear forwards 0.4s;
+color: black;
+
+}
+.H {
+opacity: 0;
+animation: drop .7s linear forwards 0.4s;
+
+color: black;
+
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(-180px);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-160px);
+        opacity: 0;
+    }
+    30% {
+        transform: translateY(-140px);
+        opacity: 0;
+    }
+    40% {
+        transform: translateY(-120px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-100px);
+        opacity: 1;
+    }
+    60% {
+        transform: translateY(-80px);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(-30px);
+        opacity: 1;
+    }
+    90% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.wrapper{
+    transition: opacity 0.5s ease-in-out;
+   
+
+}
+
+  body{
+        background-color: white;
+    
+  }
+
+</style>
+<body>
+
+    <div class="wrapper">
+        <h1 class="mix&match">
+            
+                <span class="F">F</span>
+                <span class="I">I</span>
+                <span class="IM"><img style="height: 40px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADoklEQVR4nO2aTWgTQRTHB7XSVi3ix8mLePCg6EG8+N2LIkLRS05tszMRgnrx4+KxtXrRswqFQhHRg1AUC2IVqafiIdjum9XWtG+mjS1e/Lgp+EFktm2aJk26m+xudjf7gyHLZvftvH/ezHs7GUIiIiJqRXJiYptqpJ64ZBgbKYhbjOMs4yI733CWcuzpGPuygYQZ9j69nXEBS44vb5QLXV1Dwgrj4lUp53MN8CUJI8zAo6s6n4uEycMkbFCOPdYFwBskbFCOvTYE6CX1HAGMY3c5W13Dw+sSMHVQfZKgoPGpI1YFSIA8VM4WBXHfjBQQd1d8lpSNFMR1CngnPprZQfwCBRyyEP4vVrPDQNwrJwAFvJ2zB/jOkc5rXLZSEIMMxIlKbagcb+b6Us4DjlmpDFXoU336QKkhwDg+zRtO34kTUOW8mafF82rsqGpPzfKUi89LuV9k1LhPpuaaHemrjscYxx+M41/KxWUnbBL1yyvnE7o47ohBQkjnx9mt543MFuICyVSqoT2dbiF+IJmaa9ZAnmOAN1WKK9fMa3RxNjaSaSJBpyubXUMBr1HAb9ZTYK4k/sq4vKJskCCiSdmohoxtx4trgmfKFgkalIuH1Tufyw4PSJDQDHnaKedzxREXpwJTHTIQb5wWgHLxuprq0DPa0+kWysUfFwT4nRgf31RpdegZccD9TjufE0HHfZVWh57BVMHkkgDVlOGeoXHZ6pYAyjbxO1okgIwigBWFL/60H/LF9wR2CMRVZgAxYGOyG1gpmwRWAG1U7qQc+63nfOxX9/hGAMqxLf+VtXMMd/tNANWnglfrNscEYBy7rXakVgIUP7f8ynJZYiOZJgYzu1QzjwMqQKEflgXQ8ozNHwdTgEI/IgGcigAKYrDkut7i6vHy6x8zLj5ZjQB17cI92cqf62IE0HIdKbXYaVcAm/Y9FUCrIB/bnQPs2vfNHBAKAWJVpEE/CVBxGiwkqALYteFIKVwrAVwthZ3AbQF8D40EwCgCWFFlh0Mr7RqpmyGQ0CVVLbACaKNyc+xJdq3XAjixXadqKOBJ9RcY5fjWawGc2q5TFRQwsdCJGa8FcGO7ToW7P6bOqIWLup0D7BAJwKMI6I+GAI/mgGz9ToIg+ore/AA7zFZUIos+EjYYx4sF7wH/mDG9J/5hcq95nB8ZIC+QsJFMpRrUUrfpLOAvtQt08Tum41V1bkGIRzXf5+P2LjIlRuH5mGGs983m5ogIUjf8B3DHB7I5ZgcmAAAAAElFTkSuQmCC"></span>
+                
+            <span class="together">
+                <span class="C">C</span>
+                <span class="H">H</span>
+                <span class="E">E</span>
+                <span class="c">C</span>
+                <span class="K">K</span>
+               
+            </span>
+               
+      </h1>
+     </div>
+    <script>
+        $(document).ready(function(){
+
+            $(".wrapper").fadeOut(3000);
+            setTimeout(function(){
+                window.location.href = "FitCheck.html";
+            },5000);
+           
+           })
+     
+    </script>
+    
+</body>
+</html>

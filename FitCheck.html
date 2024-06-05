@@ -481,11 +481,34 @@
 
         });
 
+      
+        function BMIstatus(result){
+
+            if(result < 18.5)
+            {
+                return "Underweight";
+            }
+            else if(result >= 18.5 && result <= 24.9)
+            {
+                return "Normal Weight";
+            }
+            else if(result >= 25 && result <= 29.9)
+            {
+                return "Overweight";
+            }
+            else if(result >= 30)
+            {
+                return "Obese";
+            }
+
+        }
+      
+
         $("#Res1").click(function(){
             var height = document.getElementById("height").value;
             var weight = document.getElementById("weight").value;
             var bmi = weight / (height/100 * height/100);
-            var result = "Your BMI is:  " + bmi.toFixed(2);
+            var result = "Your BMI is:  " + bmi.toFixed(2) + " and you are " + BMIstatus(bmi);
             $("#AppendHere1").html(result);
         });
 
